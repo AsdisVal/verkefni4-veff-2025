@@ -1,8 +1,8 @@
-import { Category } from '@/components/Category/Category';
 import Navigation from '@/components/Navigation/Navigation';
-import styles from '../../page.module.css';
+import EditSingular from '@/components/Edit/EditCategory';
+import styles from '../../../page.module.css';
 
-export default async function Flokkur({
+export default async function BreytaFlokk({
   params,
 }: {
   params: Promise<{ flokkur: string }>;
@@ -12,7 +12,7 @@ export default async function Flokkur({
   return (
     <div className={styles.page}>
       <Navigation />
-      <Category slug={flokkur} />
+      <EditSingular slug={flokkur} title={`Breyta ${flokkur}`} />
     </div>
   );
 }
