@@ -11,7 +11,7 @@ type Props = {
   popular?: boolean;
 };
 
-export default function EditCategories({ title }: Props) {
+export default function EditList({ title }: Props) {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [categories, setCategories] = useState<Paginated<Category> | null>(
     null
@@ -23,13 +23,13 @@ export default function EditCategories({ title }: Props) {
       setUiState('loading');
 
       const api = new QuestionsApi();
-      const catResponse = await api.getCategories();
+      const categoriesResponse = await api.getCategories();
 
-      if (!catResponse) {
+      if (!categoriesResponse) {
         setUiState('error');
       } else {
         setUiState('data');
-        setCategories(catResponse);
+        setCategories(categoriesResponse);
       }
     }
     fetchData();
@@ -38,13 +38,9 @@ export default function EditCategories({ title }: Props) {
   function deleteCategory(slug: string) {
     async function deleteData() {
       const api = new QuestionsApi();
-      const response = await api.fetchFromApi(`categories/${slug}`);
-      if (
-        typeof response === 'object' &&
-        response !== null &&
-        'success' in response &&
-        !response.success
-      ) {
+      const response = await api.deleteCategory(slug);
+
+      if (!response.success) {
         setUiState('error');
         setError(response.err);
       }
