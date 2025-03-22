@@ -11,7 +11,7 @@ type Props = {
   popular?: boolean;
 };
 
-export default function AlterListCategories({ title }: Props) {
+export default function EditCategories({ title }: Props) {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [categories, setCategories] = useState<Paginated<Category> | null>(
     null
@@ -38,8 +38,13 @@ export default function AlterListCategories({ title }: Props) {
   function deleteCategory(slug: string) {
     async function deleteData() {
       const api = new QuestionsApi();
-      const response = await api.fetchFromApi(`categories/${slug}`, 'DELETE');
-      if (!response.success) {
+      const response = await api.fetchFromApi(`categories/${slug}`);
+      if (
+        typeof response === 'object' &&
+        response !== null &&
+        'success' in response &&
+        !response.success
+      ) {
         setUiState('error');
         setError(response.err);
       }
