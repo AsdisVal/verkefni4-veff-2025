@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './CategoryForm.module.css';
+import styles from './Form.module.css';
 
 type Props = {
   title?: string;

@@ -55,7 +55,7 @@ export default function EditSingular({ title, slug }: Props) {
     <div>
       <h2>{title}</h2>
       {uiState === 'loading' && <p>loading...</p>}
-      {uiState === 'data' && <p>Flokkur uppfærður!</p>}
+      {uiState === 'data' && <p>Flokkur er uppfærður!</p>}
       {uiState === 'error' && !error && <p>Villa við að ná í flokk</p>}
       {uiState === 'error' && error && (
         <p>Villa við að uppfæra flokk: {`${error}`}</p>

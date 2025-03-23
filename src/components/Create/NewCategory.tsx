@@ -28,8 +28,8 @@ export default function CreateCategory({ title }: { title: string }) {
   return (
     <div>
       <h2>{title}</h2>
-      {uiState === 'loading' && <p>bæti við flokk...</p>}
-      {uiState === 'data' && <p>Flokk bætt við!</p>}
+      {uiState === 'loading' && <p>flokkur að bætast í safnið...</p>}
+      {uiState === 'data' && <p>Flokki var bætt í safnið þökk sé þér!</p>}
       {uiState === 'error' && error && (
         <p>Villa við að bæta við flokk: {`${error}`}</p>
       )}

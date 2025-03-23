@@ -11,7 +11,7 @@ type Props = {
   popular?: boolean;
 };
 
-export default function EditList({ title }: Props) {
+export default function EditCategoriesList({ title }: Props) {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [categories, setCategories] = useState<Paginated<Category> | null>(
     null
@@ -55,7 +55,7 @@ export default function EditList({ title }: Props) {
       return { ...prevCategories, data: newCategories };
     });
   }
-  function deleteFactory(slug: string) {
+  function deletionOfCategory(slug: string) {
     return () => deleteCategory(slug);
   }
 
@@ -63,18 +63,18 @@ export default function EditList({ title }: Props) {
     <div>
       <h2>{title}</h2>
 
-      {uiState === 'loading' && <p>Sæki flokka</p>}
-      {uiState === 'error' && !error && <p>Villa við að ná í flokka</p>}
+      {uiState === 'loading' && <p>Sækjum flokkana</p>}
+      {uiState === 'error' && !error && <p>Villa við að ná í flokkana</p>}
       {uiState === 'error' && error && (
-        <p>Villa við að eyða flokki: {`${error}`}</p>
+        <p>Villa kom við að eyða flokki: {`${error}`}</p>
       )}
       {uiState === 'data' && (
         <ul>
           {categories?.data.map((category, index) => (
             <li key={index}>
               <p>{category.name}</p>
-              <Link href={`/flokkar/breyta/${category.slug}`}>Breyta</Link>
-              <button onClick={deleteFactory(category.slug)}>Eyða</button>
+              <Link href={`/flokkar/edit/${category.slug}`}>Breyta</Link>
+              <button onClick={deletionOfCategory(category.slug)}>Eyða</button>
             </li>
           ))}
         </ul>
