@@ -4,6 +4,7 @@
     font-family: 'Courier New', Courier, monospace;
     margin: 0 auto;
     padding: 1rem;
+    font-size: 1.5rem; /* Increase font size */
   }
 
   .nav ul {
