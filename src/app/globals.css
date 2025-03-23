@@ -66,6 +66,6 @@ button {
 }
 
 button:hover {
-  background-color: rgb(195, 13, 195);
+  background-color: rgb(253, 107, 131);
   transform: scale(1.05); 
 }
