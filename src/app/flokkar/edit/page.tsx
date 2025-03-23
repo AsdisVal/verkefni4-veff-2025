@@ -8,7 +8,7 @@ export default async function MargirFlokkar() {
     <div className={styles.page}>
       <Navigation />
       <EditCategoriesList title="Breyta flokkum" />
-      <Link href="/flokkar/edit/add">Bæta við nýjum flokk</Link>
+      <Link href="/flokkar/edit/add">Bæta við nýjum flokki!</Link>
     </div>
   );
 }
