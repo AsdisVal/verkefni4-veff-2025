@@ -4,6 +4,7 @@ import { QuestionsApi } from '@/api';
 import { Question as TQuestion, UiState } from '@/types';
 import { JSX, useEffect, useState } from 'react';
 import { Question } from '../Question/Question';
+import styles from './Category.module.css';
 
 export function Category({ slug }: { slug: string }): JSX.Element {
   const [uiState, setUiState] = useState<UiState>('initial');
@@ -39,7 +40,8 @@ export function Category({ slug }: { slug: string }): JSX.Element {
       return <p>Engin gögn fundust</p>;
     case 'data':
       return (
-        <div>
+        <div className={styles.container}>
+          <h2>Spurningar um {slug.toUpperCase()}</h2>
           {questions.map((question) => (
             <Question key={question.id} question={question} />
           ))}
